@@ -50,7 +50,7 @@ export async function request(config,uri,payload={}) {
 }
 export function connectionHealth(lastResponse,now=performance.now()){
  const age=now-lastResponse;
- return age>=5000?'expired':age>=4000?'inactive':'healthy';
+ return age>=20000?'expired':age>=15000?'inactive':'healthy';
 }
 // Keep one paired connection while online; launch on reconnection before querying power.
 export function watchConnection(config,cycle,log){

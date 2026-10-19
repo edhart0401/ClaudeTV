@@ -82,8 +82,12 @@ It does not select our developer app as the TV's initial input.
 A subsequent cycle suppressed LG's menu but did not launch our app. The helper
 was alive yet logged neither disconnection nor fresh state changes, while an
 independent connection could query the TV. The persistent socket had stalled.
-The helper now treats missing power replies for four seconds as inactive and
-forces reconnection after five seconds; repeated inactive observations arm the
+The helper now treats missing power replies for fifteen seconds as inactive and
+forces reconnection after twenty seconds; repeated inactive observations arm the
 next launch. An explicit launch reopened the app after deploying this repair.
 The timeout regression failed before the fix; all twelve tests pass afterwards.
 Physical-cycle reliability still needs a new standby/on check.
+
+The response timeout was increased from five to twenty seconds after startup
+stalls triggered premature reconnects. Immediate launching and 500 ms polling
+remain unchanged. Timeout boundary tests cover the longer startup allowance.
