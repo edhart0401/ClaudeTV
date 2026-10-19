@@ -15,8 +15,14 @@ test('remote reaches every service, PS4 and both corner controls',()=>{
  assert.equal(nextFocus(8,'ArrowUp'),1);
  assert.equal(nextFocus(2,'ArrowUp'),0);
 });
-test('clock formatting works on Chrome 38 without String.padStart',async()=>{
- const {clockParts}=await import('../compat/navigation.js');
- assert.deepEqual(clockParts(0,7),['00','07']);
- assert.deepEqual(clockParts(23,59),['23','59']);
+test('packaged Art Deco background resolves relative to the CSS file',async()=>{
+ const {readdir}=await import('node:fs/promises');
+ const {resolve,dirname}=await import('node:path');
+ const cssName=(await readdir('dist-legacy/assets')).find(n=>n.endsWith('.css'));
+ const cssFile=resolve('dist-legacy/assets',cssName);
+ const css=await readFile(cssFile,'utf8');
+ const match=css.match(/url\(['"]?([^)'" ]*art-deco\.svg)['"]?\)/);
+ assert.ok(match,'Background must be included in packaged stylesheet');
+ const svg=await readFile(resolve(dirname(cssFile),match[1]),'utf8');
+ assert.match(svg,/<pattern/);
 });

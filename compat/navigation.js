@@ -8,4 +8,3 @@ export function nextFocus(index,key){
  };
  return directions[key]?directions[key][index]:index;
 }
-export function clockParts(hour,minute){return [('0'+hour).slice(-2),('0'+minute).slice(-2)];}

@@ -104,3 +104,18 @@ buttons within its 1920×1080 viewport, focus began on Netflix, Right moved focu
 to Prime Video, and clicking the PS4 card brought HDMI 2 to the foreground.
 The Nuvio card was also exercised live and opened `space.nuvio.native.legacy`;
 the redesigned launcher was reopened afterwards.
+
+## Art Deco logo edition (0.3.0)
+
+The next iteration removes the greeting, clock, header branding, section titles,
+footer, separators, tile indices, descriptions and launch arrows. Settings and
+Exit remain in their opposite top corners as labelled accessible icon buttons.
+The same six streaming cards use enlarged centred marks. The PS4 tile contains
+only a vector PS4 mark and still opens HDMI 2. Background artwork is the local
+`public/backgrounds/art-deco.svg`: a repeating gold-line fan pattern on deep teal.
+Gold focus rings complement the pattern. There are no remote image requests.
+
+The packaged background URL has an automated path-resolution check. All fifteen
+tests pass. A fresh 1080p preview was visually inspected; live TV inspection
+confirmed nine buttons, Netflix focus, only service wordmarks in visible text,
+and the correct app-local background URL. Navigation and app IDs are unchanged.

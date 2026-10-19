@@ -1,8 +1,32 @@
 [
- {"id":"netflix","title":"Netflix","brand":"netflix","subtitle":"Films & series"},
- {"id":"lovefilm","title":"Prime Video","brand":"prime","subtitle":"Films & series"},
- {"id":"bbc.iplayer.3.0","title":"BBC iPlayer","brand":"iplayer","subtitle":"Live & on demand"},
- {"id":"youtube.leanback.v4","title":"YouTube","brand":"youtube","subtitle":"A little of everything"},
- {"id":"com.disney.disneyplus-prod","title":"Disney+","brand":"disney","subtitle":"Stories worth staying in for"},
- {"id":"space.nuvio.native.legacy","title":"Nuvio","brand":"nuvio","subtitle":"Your media, together"}
+  {
+    "id": "netflix",
+    "title": "Netflix",
+    "brand": "netflix"
+  },
+  {
+    "id": "lovefilm",
+    "title": "Prime Video",
+    "brand": "prime"
+  },
+  {
+    "id": "bbc.iplayer.3.0",
+    "title": "BBC iPlayer",
+    "brand": "iplayer"
+  },
+  {
+    "id": "youtube.leanback.v4",
+    "title": "YouTube",
+    "brand": "youtube"
+  },
+  {
+    "id": "com.disney.disneyplus-prod",
+    "title": "Disney+",
+    "brand": "disney"
+  },
+  {
+    "id": "space.nuvio.native.legacy",
+    "title": "Nuvio",
+    "brand": "nuvio"
+  }
 ]
