@@ -40,3 +40,15 @@ returned Active, an explicit launch succeeded, and the foreground app changed to
 the launcher. launchctl reports the agent running. Actual standby/on transition
 remains to be confirmed with the physical remote; the helper does not power-cycle
 the TV itself during installation.
+
+## Startup timing capture
+
+`scripts/tv-startup-monitor.mjs PRIVATE_PAIRING_PATH` passively logs JSON lines
+for remote socket readiness, pairing completion, power-state changes and foreground
+app changes. It polls over one persistent connection every 250 ms, reconnecting
+when the TV disconnects. The helper separately logs power observations, request
+duration, launch send and launch acknowledgement timestamps. Pairing secrets are
+never logged. Timing capture does not change the helper's five-second interval.
+LG's Home menu can be an overlay without a foreground-app change, so its visual
+appearance may need a user observation or a video to establish an exact timestamp.
+Stop the temporary monitor after the experiment to end its frequent polling.

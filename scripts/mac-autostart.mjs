@@ -60,14 +60,17 @@ async function main(){
  if(process.argv[3]==='--launch'){
   await request(config,'ssap://system.launcher/launch',{id:app});log('Launcher opened');return;
  }
+ let previousState;
  const cycle=new PowerCycle();log('Watcher started; waiting for next TV power cycle');
  while(true){
-  let active=false;
-  try{const power=await request(config,'ssap://com.webos.service.tvpower/power/getPowerState');active=power.state==='Active';}catch{}
+  let active=false,state='unreachable';
+  const pollStarted=Date.now();
+  try{const power=await request(config,'ssap://com.webos.service.tvpower/power/getPowerState');state=power.state;active=state==='Active';}catch{/* Standby commonly disconnects the remote API. */}
+  if(state!==previousState){log('Power observation: '+state+'; request '+(Date.now()-pollStarted)+'ms');previousState=state;}
   if(cycle.observe(active)){
    log('TV became active; opening launcher');
    for(let attempt=0;attempt<3;attempt++){
-    try{await request(config,'ssap://system.launcher/launch',{id:app});log('Launcher opened');break;}
+    try{await request(config,'ssap://system.launcher/launch',{id:app});log('Launch acknowledged');break;}
     catch{log('Launch attempt failed');await new Promise(r=>setTimeout(r,3000));}
    }
   }
