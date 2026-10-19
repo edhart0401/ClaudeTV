@@ -56,3 +56,23 @@ now records its own foreground transitions at 500 ms intervals.
 LG's Home menu can be an overlay without a foreground-app change, so its visual
 appearance may need a user observation or a video to establish an exact timestamp.
 Stop the temporary monitor after the experiment to end its frequent polling.
+
+## Home-menu startup setting experiment
+
+On 2026-10-20 (local time), the TV's own settings service returned
+`general.homeAutoLaunch = "on"`. Through the launcher's Developer Mode bridge,
+`com.webos.settingsservice/setSystemSettings` accepted changing only this key to
+`"off"`. A separate getSystemSettings call confirmed returnValue true and the
+new value. Original/verified readings are retained locally outside the repo in
+`../startup-settings/before.json` and `after.json`.
+
+`homePromotion` remains on; `powerOnScreen` remains `"todays"`. The latter's valid
+choices could not be established: getSystemSettingDesc was denied to the app.
+No unknown setting values were written. Quick Start keys queried under general
+and option were not found, which does not establish whether a UI setting exists.
+
+This is a reversible preference change, not a startup-file modification. To undo,
+set category general, settings {"homeAutoLaunch":"on"} through the same settings
+service. A physical power-cycle comparison is required to establish whether this
+firmware actually suppresses its startup Home overlay and changes launch timing.
+It does not select our developer app as the TV's initial input.
