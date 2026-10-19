@@ -1,0 +1,7 @@
+[
+ {"id":"youtube.leanback.v4","title":"YouTube","icon":"youtube.leanback.v4.png"},
+ {"id":"netflix","title":"Netflix","color":"#b1060f"},
+ {"id":"amazon","title":"Prime Video","icon":"amazon.png"},
+ {"id":"bbc.iplayer.3.0","title":"BBC iPlayer","icon":"bbc.iplayer.3.0.png"},
+ {"id":"com.webos.app.browser","title":"Browser","icon":"com.webos.app.browser.png"}
+]

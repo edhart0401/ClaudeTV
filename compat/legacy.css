@@ -1,0 +1,5 @@
+/* Chrome 38 has neither CSS Grid nor variable fonts. Keep upstream dimensions. */
+html, body { font-family: 'LG Smart UI', 'Helvetica Neue', Arial, sans-serif; }
+.grid__track { display:flex; flex-wrap:wrap; justify-content:flex-start; width:1548px; }
+.grid__track .tile { margin-right:28px; margin-bottom:40px; height:204px; }
+.grid__track .tile:nth-child(9n) { margin-right:0; }
