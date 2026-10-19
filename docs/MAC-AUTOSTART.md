@@ -1,0 +1,42 @@
+# Mac launcher autostart
+
+The Mac login agent `local.ed.tv-launcher` polls the paired TV power-state API
+through a localhost-only macOS nc relay. It opens `dev.ed.partridge.launcher`
+after two consecutive inactive/unreachable samples followed by Active. Polls are
+five seconds apart, with an eight-second request timeout. SSH is not used.
+It does not change TV startup settings, root access, or the Home button.
+
+The first observation establishes a baseline, avoiding an unwanted app switch
+when logging in while the TV is already in use. A gap over 60 seconds resets this
+baseline on Mac wake. Three launch attempts accommodate startup delays. A prolonged
+network outage can resemble TV power-off and cause a launch on reconnection.
+
+Installed files:
+- `~/Library/Application Support/Ed TV Launcher/mac-autostart.mjs`
+- `~/Library/Application Support/Ed TV Launcher/pairing.json` (private, mode 600)
+- `~/Library/LaunchAgents/local.ed.tv-launcher.plist`
+- `~/Library/Logs/Ed TV Launcher/helper.log` and `error.log` (no pairing keys logged)
+
+The login agent runs `/opt/homebrew/bin/node` with the script and pairing path,
+using RunAtLoad and KeepAlive. It runs while Ed is logged in and the Mac is awake
+on the TV network. TV IP changes or revoked pairing require updating pairing.json.
+The launcher still requires a valid TV Developer Mode session.
+
+Disable (does not uninstall the TV launcher):
+
+```sh
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/local.ed.tv-launcher.plist
+```
+
+Re-enable:
+
+```sh
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/local.ed.tv-launcher.plist
+```
+
+Verification: nine automated tests pass, including startup baseline, one launch
+per power cycle, transient failure suppression and Mac-wake behavior. The live TV
+returned Active, an explicit launch succeeded, and the foreground app changed to
+the launcher. launchctl reports the agent running. Actual standby/on transition
+remains to be confirmed with the physical remote; the helper does not power-cycle
+the TV itself during installation.
