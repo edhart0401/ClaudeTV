@@ -14,3 +14,15 @@ test('Mac sleep resets baseline rather than interrupting an active TV',()=>{
  const s=new PowerCycle();s.observe(false,0);s.observe(false,5000);
  assert.equal(s.observe(true,120000),false);
 });
+test('fast reconnect triggers launch without waiting for a power query',()=>{
+ const s=new PowerCycle();s.observe(true,0);
+ s.observe(false,500);s.observe(false,1750);
+ assert.equal(s.observe(true,2000),true);
+ assert.equal(s.observe(true,2001),false);
+});
+test('repeated standby observations arm a connected TV for Active transition',()=>{
+ const s=new PowerCycle();s.observe(true,0);
+ s.observe(false,500);s.observe(false,1000);
+ assert.equal(s.observe(true,1500),true);
+ assert.equal(s.observe(true,2000),false);
+});

@@ -48,6 +48,59 @@ export async function request(config,uri,payload={}) {
   });
  });
 }
+// Keep one paired connection while online; launch on reconnection before querying power.
+export function watchConnection(config,cycle,log){
+ return new Promise(resolve=>{
+  let ws,child,poll,done=false,registered=false,launchAttempts=0,lastPower,lastApp;
+  const server=net.createServer(socket=>{
+   child=spawn('/usr/bin/nc',['-G','1',config.ip,'3000']);
+   socket.on('error',()=>child.kill());child.stdin.on('error',()=>socket.destroy());
+   child.on('error',finish);child.on('exit',()=>socket.destroy());
+   socket.pipe(child.stdin);child.stdout.pipe(socket);socket.on('close',()=>child.kill());
+  });
+  const timeout=setTimeout(finish,2000);
+  function finish(){
+   if(done)return;done=true;clearTimeout(timeout);clearInterval(poll);
+   if(registered)log('Remote disconnected');
+   cycle.observe(false);ws?.close();child?.kill();server.close();resolve();
+  }
+  function send(id,uri,payload={}){ws.send(JSON.stringify({id,type:'request',uri,payload}));}
+  function launch(){
+   launchAttempts++;log('Sending launch immediately; attempt '+launchAttempts);
+   send('launch','ssap://system.launcher/launch',{id:'dev.ed.partridge.launcher'});
+  }
+  function query(){
+   send('power','ssap://com.webos.service.tvpower/power/getPowerState');
+   send('foreground','ssap://com.webos.applicationManager/getForegroundAppInfo');
+  }
+  server.on('error',finish);
+  server.listen(0,'127.0.0.1',()=>{
+   ws=new WebSocket('ws://127.0.0.1:'+server.address().port);
+   ws.onopen=()=>ws.send(JSON.stringify({id:'pair',type:'register',payload:{'client-key':config.clientKey}}));
+   ws.onmessage=event=>{
+    let m;try{m=JSON.parse(event.data);}catch{log('Invalid remote response');return;}
+    if(m.type==='registered'){
+     registered=true;clearTimeout(timeout);log('Remote registered');
+     if(cycle.observe(true))launch();
+     query();poll=setInterval(query,500);
+    }else if(m.id==='power' && m.type!=='error'){
+     const state=m.payload?.state;
+     if(state!==lastPower){log('Power state: '+state);lastPower=state;}
+     if(cycle.observe(state==='Active')){launchAttempts=0;launch();}
+    }else if(m.id==='foreground' && m.type!=='error'){
+     const app=m.payload?.appId;
+     if(app!==lastApp){log('Foreground: '+app);lastApp=app;}
+    }else if(m.id==='launch'){
+     if(m.type==='error'||m.payload?.returnValue===false){
+      log('Launch rejected');
+      if(launchAttempts<3)setTimeout(()=>{if(!done)launch();},1000);
+     }else log('Launch acknowledged');
+    }else if(m.type==='error' && !registered){log('Pairing rejected');finish();}
+   };
+   ws.onerror=finish;ws.onclose=finish;
+  });
+ });
+}
 const log=message=>console.log(new Date().toISOString()+' '+message);
 async function main(){
  const config=JSON.parse(await readFile(process.argv[2],'utf8'));
@@ -60,22 +113,12 @@ async function main(){
  if(process.argv[3]==='--launch'){
   await request(config,'ssap://system.launcher/launch',{id:app});log('Launcher opened');return;
  }
- let previousState;
- const cycle=new PowerCycle();log('Watcher started; waiting for next TV power cycle');
+ const cycle=new PowerCycle();log('Fast watcher started; waiting for next TV power cycle');
  while(true){
-  let active=false,state='unreachable';
-  const pollStarted=Date.now();
-  try{const power=await request(config,'ssap://com.webos.service.tvpower/power/getPowerState');state=power.state;active=state==='Active';}catch{/* Standby commonly disconnects the remote API. */}
-  if(state!==previousState){log('Power observation: '+state+'; request '+(Date.now()-pollStarted)+'ms');previousState=state;}
-  if(cycle.observe(active)){
-   log('TV became active; opening launcher');
-   for(let attempt=0;attempt<3;attempt++){
-    try{await request(config,'ssap://system.launcher/launch',{id:app});log('Launch acknowledged');break;}
-    catch{log('Launch attempt failed');await new Promise(r=>setTimeout(r,3000));}
-   }
-  }
-  await new Promise(r=>setTimeout(r,5000));
+  await watchConnection(config,cycle,log);
+  await new Promise(r=>setTimeout(r,250));
  }
+
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href)
  main().catch(()=>{console.error('Autostart failed; check pairing configuration and TV access');process.exitCode=1;});
