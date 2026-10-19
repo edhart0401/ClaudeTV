@@ -14,10 +14,11 @@ Requires Node 22.18+ (native TypeScript stripping is used to read upstream desig
 npm ci --ignore-scripts
 npm run build:legacy
 npm run test:legacy
+mkdir -p build
 npx ares-package dist-legacy --no-minify -o build
 ```
 
-Create `build` first if needed. The original `npm run build` remains available.
+The original `npm run build` remains available.
 Compatibility adapters live in `compat/`; upstream TypeScript is unchanged.
 The legacy build uses Babel for ES5 syntax, a separate preceding script for missing
 runtime APIs, fixed CSS token values, a wrapping flex settings grid, and system fonts.
@@ -64,6 +65,7 @@ and HDMI 1 buttons. Package/install it using the same CLI. It is removable indep
 - Local tests parse emitted JavaScript as ES5, reject unresolved CSS variables/Grid,
   exercise explicit shortcuts and old input payloads, and reproduce startup without
   Object.getOwnPropertyDescriptors.
+- Exit launcher closes the app and returns to HDMI 2, confirmed through the paired remote API.
 - Other streaming shortcuts are configured, not individually launch-tested.
 - Physical remote/Home-button behavior needs user confirmation; no code intercepts Home.
 
