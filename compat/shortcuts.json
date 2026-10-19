@@ -1,7 +1,8 @@
 [
- {"id":"youtube.leanback.v4","title":"YouTube","icon":"youtube.leanback.v4.png"},
- {"id":"netflix","title":"Netflix","color":"#b1060f"},
- {"id":"amazon","title":"Prime Video","icon":"amazon.png"},
- {"id":"bbc.iplayer.3.0","title":"BBC iPlayer","icon":"bbc.iplayer.3.0.png"},
- {"id":"com.webos.app.browser","title":"Browser","icon":"com.webos.app.browser.png"}
+ {"id":"netflix","title":"Netflix","brand":"netflix","subtitle":"Films & series"},
+ {"id":"lovefilm","title":"Prime Video","brand":"prime","subtitle":"Films & series"},
+ {"id":"bbc.iplayer.3.0","title":"BBC iPlayer","brand":"iplayer","subtitle":"Live & on demand"},
+ {"id":"youtube.leanback.v4","title":"YouTube","brand":"youtube","subtitle":"A little of everything"},
+ {"id":"com.disney.disneyplus-prod","title":"Disney+","brand":"disney","subtitle":"Stories worth staying in for"},
+ {"id":"space.nuvio.native.legacy","title":"Nuvio","brand":"nuvio","subtitle":"Your media, together"}
 ]

@@ -34,7 +34,7 @@ await build({root,configFile:false,base:'./',plugins:[
   if(resolved===path.join(root,'src/lib/launch'))return path.join(root,'compat/launch.js');
   if(resolved===path.join(root,'src/lib/inputs'))return path.join(root,'compat/inputs.js');
  },transform(code,id){
-  if(id===path.join(root,'src/main.tsx')) return code.replace("import './theme/global.css';","import '../compat/generated/style.css';");
+  if(id===path.join(root,'src/main.tsx')) return "import '../compat/home.jsx';";
   if(id===path.join(root,'src/config/catalog.ts')) return code.replace('local.DEFAULT_APP_IDS || BASE_DEFAULT_APP_IDS',JSON.stringify(shortcuts.map(a=>a.id)));
   // Keep upstream TS read-only; remove the root-only option in this build.
   if(id===path.join(root,'src/app.tsx')) {
@@ -50,7 +50,7 @@ await build({root,configFile:false,base:'./',plugins:[
  }}}
 ],build:{outDir:'dist-legacy',cssCodeSplit:false,target:'es2015',minify:false,modulePreload:false,rollupOptions:{output:{format:'iife',inlineDynamicImports:true,entryFileNames:'assets/app.js'}}}});
 const appinfo=JSON.parse(await readFile(path.join(root,'public/appinfo.json'),'utf8'));
-Object.assign(appinfo,{id:'dev.ed.partridge.launcher',version:'0.1.0',title:'Ed’s Launcher'});
+Object.assign(appinfo,{id:'dev.ed.partridge.launcher',version:'0.2.0',title:'Ed’s Launcher'});
 await writeFile(path.join(root,'dist-legacy/appinfo.json'),JSON.stringify(appinfo,null,2));
 
 // Run polyfills in a preceding script: esbuild captures Object APIs before imports initialize.

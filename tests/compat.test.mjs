@@ -31,7 +31,7 @@ test('legacy CSS resolves tokens and replaces grid without variable font',async(
 test('explicit shortcuts work without any installed-app API',async()=>{
  const {listApps}=await loadModule('compat/apps.js');
  const result=await listApps(false);
- assert.ok(result.apps.some(a=>a.id==='com.webos.app.browser'));
+ assert.ok(result.apps.some(a=>a.id==='space.nuvio.native.legacy'));
  assert.equal(result.source,'catalog');
  assert.equal(new Set(result.apps.map(a=>a.id)).size,result.apps.length);
 });
@@ -54,7 +54,7 @@ test('shortcuts initialize when Object.getOwnPropertyDescriptors is absent (Chro
  runInContext(await readFile('dist-legacy/assets/polyfills.js','utf8'),context);
  runInContext(legacy.code,context);
  await new Promise(resolve=>setTimeout(resolve,0));
- assert.ok(context.window.apps.some(a=>a.id==='com.webos.app.browser'));
+ assert.ok(context.window.apps.some(a=>a.id==='space.nuvio.native.legacy'));
 });
 test('legacy exit closes only this app instead of launching a nonexistent LG Home ID',async()=>{
  const previous=globalThis.window;

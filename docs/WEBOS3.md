@@ -74,3 +74,33 @@ and HDMI 1 buttons. Package/install it using the same CLI. It is removable indep
 - https://github.com/partridgeworks/webos-launcher
 - https://webostv.developer.lge.com/develop/getting-started/developer-mode-app
 - https://webostv.developer.lge.com/develop/references/application-manager
+
+## Living-room redesign (0.2.0)
+
+The legacy build now uses `compat/home.jsx` as its entry, retaining upstream
+TypeScript unchanged. Six explicit service cards are Netflix, Prime Video
+(actual installed ID `lovefilm`), BBC iPlayer, YouTube, Disney+ and Nuvio Legacy.
+A larger controller card opens `com.webos.app.hdmi2` and is labelled PlayStation 4;
+no HDMI settings or console power commands are changed. The TV input list is not
+shown. Settings (top left) opens LG's `com.palm.app.settings`; Exit (top right)
+closes the launcher. The physical Home key stays with LG. Previous reorder/input
+menus have been replaced by this fixed curated layout.
+
+The screen uses a 1920×1080 canvas, two rows of three service cards and a tall PS4
+card. Branding graphics are local vector/text artwork. The background, focus
+highlights and transitions use Chrome-38-compatible CSS without network artwork,
+CSS grid, variable fonts or backdrop filters. Clock formatting uses older string
+operations because the TV does not provide String.padStart.
+
+Remote navigation is explicit in `compat/navigation.js`; all nine buttons are
+reachable by arrows. Enter activates the focused control, Back closes the app,
+and the pointer supports hover/click. Initial focus is Netflix. Runtime errors
+opening an app appear on screen without exposing service response details.
+
+Verification: 15 automated tests pass, including ES5 parsing, old browser runtime
+compatibility, exact curated service IDs and full remote-navigation reachability.
+A 1080p browser preview was visually checked. The installed TV rendered all nine
+buttons within its 1920×1080 viewport, focus began on Netflix, Right moved focus
+to Prime Video, and clicking the PS4 card brought HDMI 2 to the foreground.
+The Nuvio card was also exercised live and opened `space.nuvio.native.legacy`;
+the redesigned launcher was reopened afterwards.
