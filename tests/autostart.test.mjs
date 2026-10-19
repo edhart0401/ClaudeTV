@@ -26,3 +26,9 @@ test('repeated standby observations arm a connected TV for Active transition',()
  assert.equal(s.observe(true,1500),true);
  assert.equal(s.observe(true,2000),false);
 });
+test('silent connection is inactive after four seconds, expired after five',async()=>{
+ const {connectionHealth}=await import('../scripts/mac-autostart.mjs');
+ assert.equal(connectionHealth(1000,4999),'healthy');
+ assert.equal(connectionHealth(1000,5000),'inactive');
+ assert.equal(connectionHealth(1000,6000),'expired');
+});

@@ -48,10 +48,14 @@ export async function request(config,uri,payload={}) {
   });
  });
 }
+export function connectionHealth(lastResponse,now=performance.now()){
+ const age=now-lastResponse;
+ return age>=5000?'expired':age>=4000?'inactive':'healthy';
+}
 // Keep one paired connection while online; launch on reconnection before querying power.
 export function watchConnection(config,cycle,log){
  return new Promise(resolve=>{
-  let ws,child,poll,done=false,registered=false,launchAttempts=0,lastPower,lastApp;
+  let ws,child,poll,done=false,registered=false,launchAttempts=0,lastPower,lastApp,lastResponse=performance.now();
   const server=net.createServer(socket=>{
    child=spawn('/usr/bin/nc',['-G','1',config.ip,'3000']);
    socket.on('error',()=>child.kill());child.stdin.on('error',()=>socket.destroy());
@@ -70,6 +74,9 @@ export function watchConnection(config,cycle,log){
    send('launch','ssap://system.launcher/launch',{id:'dev.ed.partridge.launcher'});
   }
   function query(){
+   const health=connectionHealth(lastResponse);
+   if(health!=='healthy')cycle.observe(false);
+   if(health==='expired'){log('Remote response timeout; reconnecting');finish();return;}
    send('power','ssap://com.webos.service.tvpower/power/getPowerState');
    send('foreground','ssap://com.webos.applicationManager/getForegroundAppInfo');
   }
@@ -80,10 +87,11 @@ export function watchConnection(config,cycle,log){
    ws.onmessage=event=>{
     let m;try{m=JSON.parse(event.data);}catch{log('Invalid remote response');return;}
     if(m.type==='registered'){
-     registered=true;clearTimeout(timeout);log('Remote registered');
+     registered=true;lastResponse=performance.now();clearTimeout(timeout);log('Remote registered');
      if(cycle.observe(true))launch();
      query();poll=setInterval(query,500);
     }else if(m.id==='power' && m.type!=='error'){
+     lastResponse=performance.now();
      const state=m.payload?.state;
      if(state!==lastPower){log('Power state: '+state);lastPower=state;}
      if(cycle.observe(state==='Active')){launchAttempts=0;launch();}
