@@ -243,3 +243,14 @@ black/red logo and dark utility controls. Other apps use their brand fields.
 Both logo and colour retain the 420ms crossfade. Browser regression checks
 require image-free backgrounds and exact Netflix/YouTube colours.
 18 tests and browser checks pass; no TV deployment.
+
+## Plain full-scene artwork (0.10.0, local only)
+
+Removed the central card/control and all feathering, blend modes and blur.
+The selected app’s original tile image is centred across the scene without
+repetition or distortion; brand colour fills unused space. The seven bottom
+buttons select on focus and launch on click/OK. Up reaches utilities; Down
+returns directly to the remembered app. Background opacity still crossfades.
+17 tests pass. Browser checks cover seven non-repeating image backgrounds, no
+central control, rapid input, launch simulation and reduced motion. Netflix,
+Prime and BBC previews visually checked. No TV installation performed.
