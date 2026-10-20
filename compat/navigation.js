@@ -1,17 +1,10 @@
-// IDs: 0 Settings, 1 Exit, 2–8 seven carousel services.
-export function nextFocus(index,key,lastApp=2){
- if(index<2){
-  if(key==='ArrowDown')return lastApp;
-  if(key==='ArrowLeft')return 0;
-  if(key==='ArrowRight')return 1;
-  return index;
- }
- if(key==='ArrowLeft')return index===2?8:index-1;
- if(key==='ArrowRight')return index===8?2:index+1;
- if(key==='ArrowUp')return index<6?0:1;
- return index;
-}
-export function carouselStep(from,to){
- const distance=(to-from+7)%7;
- return distance>3?distance-7:distance;
+// IDs: 0 Settings, 1 Exit, 2–7 streaming cards, 8 PS4.
+export function nextFocus(index,key){
+ const directions={
+  ArrowLeft:[0,0,2,2,3,5,5,6,4],
+  ArrowRight:[1,1,3,4,8,6,7,8,8],
+  ArrowUp:[0,1,0,0,1,2,3,4,1],
+  ArrowDown:[2,8,5,6,7,5,6,7,8]
+ };
+ return directions[key]?directions[key][index]:index;
 }

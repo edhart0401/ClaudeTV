@@ -10,8 +10,8 @@ test('remote reaches every service, PS4 and both corner controls',()=>{
  const seen=new Set([2]),queue=[2];
  while(queue.length){const i=queue.shift();for(const key of ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight']){const n=nextFocus(i,key);assert.ok(n>=0&&n<=8);if(!seen.has(n)){seen.add(n);queue.push(n);}}}
  assert.equal(seen.size,9);
- assert.equal(nextFocus(8,'ArrowRight'),2);
- assert.equal(nextFocus(2,'ArrowLeft'),8);
+ assert.equal(nextFocus(4,'ArrowRight'),8);
+ assert.equal(nextFocus(7,'ArrowRight'),8);
  assert.equal(nextFocus(8,'ArrowUp'),1);
  assert.equal(nextFocus(2,'ArrowUp'),0);
 });
@@ -25,15 +25,6 @@ test('packaged Art Deco background resolves relative to the CSS file',async()=>{
  assert.ok(match,'Background must be included in packaged stylesheet');
  const actual=await readFile(resolve(dirname(cssFile),match[1]));
  assert.deepEqual(actual,await readFile('public/backgrounds/art-deco-reference.webp'));
-});
-test('carousel crosses either wrap boundary by one step and remembers its app',async()=>{
- const {carouselStep}=await import('../compat/navigation.js');
- assert.equal(carouselStep(6,0),1);
- assert.equal(carouselStep(0,6),-1);
- assert.equal(nextFocus(0,'ArrowDown',7),7);
- let position=2;
- for(let n=0;n<7;n++)position=nextFocus(position,'ArrowRight');
- assert.equal(position,2);
 });
 test('all supplied logos are packaged byte-for-byte',async()=>{
  for(const file of ['Netflix.jpg','Prime.jpg','BBC.png','Youtube.png','Disney.webp','Nuvio.png','PS4.jpg']){

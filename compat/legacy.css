@@ -35,25 +35,15 @@ button{font-family:inherit;cursor:pointer;}
 .ps4-logo{position:absolute;width:320px;height:123px;left:47px;top:198px;}
 .home-error{position:absolute;bottom:125px;left:550px;right:550px;text-align:center;padding:20px;border-radius:12px;background:#492530;color:#fff;font-size:22px;}
 
-/* GPU transforms only: one ring revolves; cards remain in the same DOM order. */
-.carousel{position:absolute;left:100px;top:360px;width:1720px;height:340px;perspective:1400px;-webkit-perspective:1400px;}
-.carousel-ring{position:absolute;width:440px;height:280px;left:640px;top:30px;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform 420ms cubic-bezier(.22,.75,.25,1);}
-.carousel-slot{position:absolute;left:0;top:0;width:440px;height:280px;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
-.carousel .service-card{display:block;width:440px;height:280px;margin:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
-.carousel .service-ps4{background:radial-gradient(ellipse at 50% 40%,#263f62,#111f36 85%);}
-.carousel .ps4-logo{left:60px;top:79px;}
-.carousel .prime-mark svg{left:80px;top:160px;}
-.carousel .disney-mark>svg{left:55px;top:74px;}
-.carousel .service-card:focus,.carousel .service-card.is-selected{transform:none;}
-@media (prefers-reduced-motion:reduce){.carousel-ring{transition:none;}}
+/* Preserve the original aspect ratio without relying on object-fit. */
+.service-logo{position:absolute;display:block;left:0;top:50%;width:100%;height:auto;transform:translateY(-50%);pointer-events:none;}
+.service-netflix{background:#000;}
+.service-prime{background:#17233e;}
+.service-disney{background:#020d3f;}
+.service-ps4{background:#1451da;}
+.service-youtube{background:#fff;}
+.service-iplayer{background:#111;}
+.service-nuvio{background:#101018;}
 
-/* Original supplied artwork, fitted without stretching or cropping. */
-.carousel .service-card{background:#080a10;}
-.service-logo{position:absolute;display:block;left:0;top:0;width:100%;height:100%;object-fit:contain;pointer-events:none;}
-.carousel .service-netflix{background:#000;}
-.carousel .service-prime{background:#17233e;}
-.carousel .service-disney{background:#020d3f;}
-.carousel .service-ps4{background:#1451da;}
-.carousel .service-youtube{background:#fff;}
-.carousel .service-iplayer{background:#111;}
-.carousel .service-nuvio{background:#101018;}
+/* The supplied YouTube artwork has a pale checkerboard: flatten it to white. */
+.logo-youtube{filter:contrast(2);}

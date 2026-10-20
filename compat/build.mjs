@@ -50,7 +50,7 @@ await build({root,configFile:false,base:'./',plugins:[
  }}}
 ],build:{outDir:'dist-legacy',cssCodeSplit:false,target:'es2015',minify:false,modulePreload:false,rollupOptions:{output:{format:'iife',inlineDynamicImports:true,entryFileNames:'assets/app.js'}}}});
 const appinfo=JSON.parse(await readFile(path.join(root,'public/appinfo.json'),'utf8'));
-Object.assign(appinfo,{id:'dev.ed.partridge.launcher',version:'0.6.0',title:'Ed’s Launcher'});
+Object.assign(appinfo,{id:'dev.ed.partridge.launcher',version:'0.7.0',title:'Ed’s Launcher'});
 await writeFile(path.join(root,'dist-legacy/appinfo.json'),JSON.stringify(appinfo,null,2));
 
 // Run polyfills in a preceding script: esbuild captures Object APIs before imports initialize.

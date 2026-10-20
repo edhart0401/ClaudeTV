@@ -162,3 +162,15 @@ with object-fit contain. Hand-drawn/text logo substitutes are removed. The user'
 Art Deco wallpaper is retained. Seventeen tests pass, including byte-identical
 packaged logo assets; the browser preview was visually inspected and the TV's
 image decode status checked for all seven files.
+
+## Restored tiles and YouTube background (0.7.0)
+
+Restored six streaming tiles in two rows, with the larger PS4 tile on the right
+and the original grid arrow navigation. Supplied logos and reference wallpaper
+are retained. Images use width 100%, height auto and vertical centring, preserving
+native proportions without relying on old-browser object-fit support. YouTube
+has a white tile background. A CSS contrast filter maps the supplied artwork's
+pale checkerboard to white while retaining the red/black logo; source files are
+unchanged. Sixteen tests pass. A fresh preview was visually inspected; live TV
+inspection confirmed the six tiles plus PS4, all seven images loaded, a white
+YouTube background and the expected filter and square image dimensions.
