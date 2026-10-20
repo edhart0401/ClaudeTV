@@ -8,8 +8,8 @@ async page=>{
  await page.keyboard.press('ArrowRight');await page.waitForTimeout(180);
  const opacity=await page.locator('.app-backdrop.active').evaluate(e=>Number(getComputedStyle(e).opacity));
  if(!(opacity>0&&opacity<1))throw Error('Background must crossfade');
- const fields=await page.locator('.app-backdrop').evaluateAll(es=>es.map(e=>{const s=getComputedStyle(e);return{image:s.backgroundImage,size:s.backgroundSize,repeat:s.backgroundRepeat,mask:s.maskImage,blend:s.mixBlendMode}}));
- if(new Set(fields.map(f=>f.image)).size!==7||fields.some(f=>f.size!=='contain'||f.repeat!=='no-repeat'||f.mask!=='none'||f.blend!=='normal'))throw Error('Expected seven plain centred, non-repeating original images');
+ const fields=await page.locator('.app-backdrop').evaluateAll(es=>es.map(e=>{const s=getComputedStyle(e);return{image:s.borderImageSource,slice:s.borderImageSlice,mask:s.maskImage,blend:s.mixBlendMode}}));
+ if(new Set(fields.map(f=>f.image)).size!==7||fields.some(f=>!f.slice.includes('fill')||f.mask!=='none'||f.blend!=='normal'))throw Error('Expected seven original compact scenes with extended edges');
  for(let i=0;i<23;i++)await page.keyboard.press('ArrowRight');
  await page.getByRole('button',{name:'Open YouTube',exact:true}).waitFor();
  await page.keyboard.press('Enter');await page.getByRole('status').filter({hasText:'YouTube would open'}).waitFor();

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {services,navigate,wrapSelection} from '../compat/home-model.js';
+import {services,navigate,wrapSelection,sceneStyle} from '../compat/home-model.js';
 test('all seven destinations have unique IDs and supplied artwork',()=>{
  assert.equal(services.length,7);assert.equal(new Set(services.map(s=>s.id)).size,7);
  assert.equal(services[6].id,'com.webos.app.hdmi2');
@@ -17,4 +17,15 @@ test('rapid input uses successive states without losing steps',()=>{
  let state={active:0,focus:3};for(let i=0;i<24;i++)state=navigate(state,'ArrowRight');
  assert.equal(state.active,3);assert.equal(wrapSelection(-15),6);
  assert.deepEqual(navigate(state,'unknown'),state);
+});
+
+test('compact logo scene retains aspect and keeps lettering above the strip',()=>{
+ for(const app of services){
+  const style=sceneStyle(app),[top,right,bottom,left]=style.borderWidth.split(' ').map(parseFloat);
+  assert.equal(1920-right-left,app.sceneSize[0]);
+  assert.equal(1080-top-bottom,app.sceneSize[1]);
+  assert.equal(top+app.sceneSize[1]/2,412);
+  assert.ok(app.sceneSize[0]<=736);
+  assert.equal(style.borderImageSource,'url("'+app.artwork+'")');
+ }
 });

@@ -254,3 +254,13 @@ returns directly to the remembered app. Background opacity still crossfades.
 17 tests pass. Browser checks cover seven non-repeating image backgrounds, no
 central control, rapid input, launch simulation and reduced motion. Netflix,
 Prime and BBC previews visually checked. No TV installation performed.
+
+## Compact logo with full-scene background (0.10.1, local only)
+
+Restored the former central artwork scale and vertical position without adding
+a central button or card. A CSS border-image with a one-pixel slice keeps the
+original image centre compact while extending its outer background colours to
+the scene edges. Source files are unchanged, and lettering is not enlarged
+beyond the earlier display size. Images retain their original aspect ratios.
+18 tests pass; Netflix, Prime, iPlayer and YouTube previews visually checked.
+The background opacity crossfade remains; actual TV rendering is unverified.

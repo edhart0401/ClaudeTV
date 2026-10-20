@@ -40,4 +40,4 @@ button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparen
 
 .app-backdrop.brand-youtube{filter:contrast(2);}
 
-.spotlight-home .app-backdrop{background-position:center;background-size:contain;background-repeat:no-repeat;}
+.spotlight-home .app-backdrop{box-sizing:border-box;border-style:solid;border-color:transparent;border-image-slice:1 fill;border-image-repeat:stretch;}

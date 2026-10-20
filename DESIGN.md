@@ -5,10 +5,12 @@ strip near the bottom; Settings and Exit remain at the top corners. There is
 no central card, separate hero image, mask, blend mode, shadow or blur.
 
 The fixed 1920×1080 canvas scales uniformly for local previews. Each background
-uses its original supplied logo image, centred with `background-size: contain`
-and no repetition. Its brand background fills any remaining area, preserving
-image proportions and the complete wordmark. YouTube retains the contrast
-treatment that maps its supplied checkerboard to white.
+uses its original supplied logo image at the earlier compact scale (maximum
+736px wide), centred at (960,412). CSS border-image keeps the image centre
+compact and stretches only its outermost background pixels across the scene.
+No separate card, mask, blend or blurred duplicate logo is present. Lettering
+stays above the app strip and source image files remain unchanged.
+YouTube retains the contrast treatment mapping its checkerboard to white.
 
 Background opacity crossfades over 420ms cubic-bezier(.4,0,.2,1). Selection and
 launch targets update immediately. Reduced motion disables the fade.
