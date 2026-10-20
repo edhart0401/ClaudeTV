@@ -1,7 +1,7 @@
 /* Fixed 1080p composition using features supported by the TV's Chrome 38. */
 html,body{background:#102c30;color:#f5f6fa;font-family:'Helvetica Neue',Arial,sans-serif;}
 button{font-family:inherit;cursor:pointer;}
-.living-room{position:absolute;left:0;top:0;width:1920px;height:1080px;padding:0 100px;background:radial-gradient(ellipse at 50% 48%,rgba(8,21,25,.12),rgba(4,14,18,.55)),url('/backgrounds/art-deco.svg') repeat;background-size:auto,480px 400px;}
+.living-room{position:absolute;left:0;top:0;width:1920px;height:1080px;padding:0 100px;background:radial-gradient(ellipse at 50% 48%,rgba(8,21,25,.12),rgba(4,14,18,.55)),url('/backgrounds/art-deco-reference.webp') center center no-repeat;background-size:auto,cover;}
 .home-top{position:absolute;top:51px;left:100px;right:100px;display:flex;justify-content:space-between;}
 .utility{width:64px;height:64px;border:1px solid rgba(207,178,122,.25);border-radius:50%;background:rgba(8,24,28,.7);color:#d9c59d;display:flex;align-items:center;justify-content:center;outline:none;}
 .utility svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.5;}
@@ -34,3 +34,15 @@ button{font-family:inherit;cursor:pointer;}
 .console-card{width:415px;height:520px;flex:none;border:1px solid rgba(201,181,139,.3);border-radius:14px;background:radial-gradient(ellipse at 50% 40%,#263f62,#111f36 85%);position:relative;overflow:hidden;color:#f1f5ff;padding:0;outline:none;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform 160ms ease,border-color 160ms ease,box-shadow 160ms ease;}
 .ps4-logo{position:absolute;width:320px;height:123px;left:47px;top:198px;}
 .home-error{position:absolute;bottom:125px;left:550px;right:550px;text-align:center;padding:20px;border-radius:12px;background:#492530;color:#fff;font-size:22px;}
+
+/* GPU transforms only: one ring revolves; cards remain in the same DOM order. */
+.carousel{position:absolute;left:100px;top:360px;width:1720px;height:340px;perspective:1400px;-webkit-perspective:1400px;}
+.carousel-ring{position:absolute;width:440px;height:280px;left:640px;top:30px;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform 420ms cubic-bezier(.22,.75,.25,1);}
+.carousel-slot{position:absolute;left:0;top:0;width:440px;height:280px;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.carousel .service-card{display:block;width:440px;height:280px;margin:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.carousel .service-ps4{background:radial-gradient(ellipse at 50% 40%,#263f62,#111f36 85%);}
+.carousel .ps4-logo{left:60px;top:79px;}
+.carousel .prime-mark svg{left:80px;top:160px;}
+.carousel .disney-mark>svg{left:55px;top:74px;}
+.carousel .service-card:focus,.carousel .service-card.is-selected{transform:none;}
+@media (prefers-reduced-motion:reduce){.carousel-ring{transition:none;}}

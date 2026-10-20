@@ -119,3 +119,22 @@ The packaged background URL has an automated path-resolution check. All fifteen
 tests pass. A fresh 1080p preview was visually inspected; live TV inspection
 confirmed nine buttons, Netflix focus, only service wordmarks in visible text,
 and the correct app-local background URL. Navigation and app IDs are unchanged.
+
+## Reference wallpaper and carousel (0.4.0)
+
+The supplied Art Deco WebP is copied byte-for-byte into
+`public/backgrounds/art-deco-reference.webp`. CSS uses a centred cover crop to
+fill 16:9 without stretching; a translucent shade keeps logos legible.
+
+All seven services now sit on a revolving 3D ring. Left/right rotate one slot
+with a 420 ms transform transition and wrap continuously. The ring's angle is
+accumulated, so crossing PS4/Netflix takes one step rather than spinning back
+six. Up reaches a corner control; Down returns to the last app. Pointer click
+opens the chosen tile and brings it forward; hover does not rotate the ring.
+There is no idle auto-rotation. No extra labels or pagination were added.
+
+Sixteen tests pass, including full keyboard reachability, wrap direction,
+remembered app focus, and byte-identical packaged wallpaper. The preview was
+visually checked, and the TV reported nine buttons, the correct wallpaper URL,
+and changing intermediate matrix3d transforms during navigation. Animation
+smoothness still depends on the TV GPU and should be judged on the actual TV.
