@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="400" viewBox="0 0 480 400">
+<defs>
+ <pattern id="fan" width="240" height="200" patternUnits="userSpaceOnUse">
+ <g fill="none" stroke="#bb995e" stroke-width="1.2" opacity=".40">
+  <path d="M0 200 Q0 68 120 0 Q240 68 240 200 M12 200 Q12 83 120 15 Q228 83 228 200 M26 200 Q26 98 120 32 Q214 98 214 200 M41 200 Q41 114 120 50 Q199 114 199 200 M57 200 Q57 130 120 70 Q183 130 183 200 M74 200 Q74 147 120 92 Q166 147 166 200 M92 200 Q92 166 120 119 Q148 166 148 200 M110 200 L120 150 L130 200 M120 0 V150"/>
+  <path d="M0 200 H240" opacity=".5"/>
+ </g></pattern>
+</defs>
+<rect width="480" height="400" fill="#102c30"/>
+<rect width="480" height="400" fill="url(#fan)"/>
+</svg>

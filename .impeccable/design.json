@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T13:21:59.578874+00:00",
+  "title": "Design System: Projection Room Launcher",
+  "extensions": {
+    "colorMeta": {
+      "bronze": {
+        "role": "primary",
+        "displayName": "Bronze"
+      },
+      "midnight": {
+        "role": "neutral",
+        "displayName": "Midnight"
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Ivory"
+      }
+    },
+    "typographyMeta": {
+      "label": {
+        "purpose": "Local preview identification"
+      },
+      "body": {
+        "purpose": "Transient notices"
+      },
+      "status": {
+        "purpose": "Opening feedback"
+      }
+    },
+    "shadows": [
+      {
+        "name": "selected-plate",
+        "value": "0 30px 70px rgba(0,0,0,.36)",
+        "purpose": "Lift selected artwork."
+      },
+      {
+        "name": "projected-floor",
+        "value": "0 24px 65px 24px rgba(0,0,0,.24)",
+        "purpose": "Diffuse ellipse beneath the plate."
+      }
+    ],
+    "motion": [
+      {
+        "name": "pointer-crossfade",
+        "value": "opacity 160ms ease-out",
+        "purpose": "Pointer mode only. Remote updates are immediate; reduced motion removes transitions."
+      },
+      {
+        "name": "artwork-background",
+        "value": "opacity 420ms cubic-bezier(.4,0,.2,1)",
+        "purpose": "Selected app artwork crossfade on remote and pointer; reduced motion removes it. Blur is static on a quarter-resolution surface."
+      }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Selected service",
+      "kind": "button",
+      "description": "Extracted from the compatibility home. Artwork frames intentionally omit raster logos in this self-contained specimen.",
+      "html": "<button class=\"ds-service\" aria-label=\"Open selected app\"></button>",
+      "css": ".ds-service{position:relative;width:736px;height:414px;border:0;padding:0;border-radius:16px;background:#080b12;box-shadow:0 30px 70px rgba(0,0,0,.36);cursor:pointer;outline:0}.ds-service:focus-visible:after{content:\"\";position:absolute;inset:0;border:2px solid #c9ac79;border-radius:16px}",
+      "refersTo": "selected-service"
+    },
+    {
+      "name": "App choice",
+      "kind": "nav",
+      "description": "Extracted from the compatibility home. Artwork frames intentionally omit raster logos in this self-contained specimen.",
+      "html": "<button class=\"ds-choice\" aria-label=\"Selected app\"><span class=\"ds-marker\"></span></button>",
+      "css": ".ds-choice{position:relative;width:160px;height:100px;margin:16px 14px 20px;padding:0;border:0;border-radius:12px;background:#101722;opacity:.84;cursor:pointer;outline:0}.ds-choice:hover,.ds-choice:focus-visible{opacity:1}.ds-choice:focus-visible:after{content:\"\";position:absolute;inset:-5px;border:2px solid #f7f4ed;border-radius:16px}.ds-marker{position:absolute;left:56px;right:56px;bottom:-20px;height:3px;border-radius:2px;background:#c9ac79}",
+      "refersTo": "app-choice"
+    },
+    {
+      "name": "Exit utility",
+      "kind": "button",
+      "description": "Operational control or feedback from the compatibility home.",
+      "html": "<button class=\"ds-utility\" aria-label=\"Exit launcher\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10 4H4v16h6M9 12h12m-5-5 5 5-5 5\"/></svg></button>",
+      "css": ".ds-utility{display:flex;align-items:center;justify-content:center;width:68px;height:68px;padding:0;border:1px solid transparent;border-radius:50%;background:transparent;color:#c3c8cf;outline:0;cursor:pointer}.ds-utility svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.ds-utility:hover{color:#fff;background:#202d40}.ds-utility:focus-visible{background:#293649;border-color:#c9ac79;color:#f7f4ed}.ds-utility:active{background:#364459}",
+      "refersTo": "corner-action"
+    },
+    {
+      "name": "Home notice",
+      "kind": "custom",
+      "description": "Operational control or feedback from the compatibility home.",
+      "html": "<div class=\"ds-notice\" role=\"status\">Netflix would open on the TV.</div>",
+      "css": ".ds-notice{font-family:\"Helvetica Neue\",Arial,sans-serif;padding:18px 24px;text-align:center;background:#273449;color:#f7f4ed;border-radius:12px;font-size:21px}",
+      "refersTo": "home-notice"
+    },
+    {
+      "name": "Opening feedback",
+      "kind": "custom",
+      "description": "Operational control or feedback from the compatibility home.",
+      "html": "<div class=\"ds-opening\" role=\"status\">Opening\u2026</div>",
+      "css": ".ds-opening{font-family:\"Helvetica Neue\",Arial,sans-serif;padding:20px;background:rgba(8,11,18,.92);text-align:center;font-size:22px;color:#f7f4ed}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Projection Room",
+    "overview": "Modern, dynamic and clean: supplied service artwork, midnight surfaces and soft brand-colour light. The user pinned the spotlight and strip composition; this metaphor describes the implemented palette and depth without claiming an independently approved comp.",
+    "keyCharacteristics": [
+      "Supplied raster identities",
+      "Bronze selection and ivory strip focus",
+      "Immediate remote response",
+      "Operational text only"
+    ],
+    "rules": [
+      {
+        "name": "Selection Key",
+        "body": "Bronze denotes selection; ivory around a strip item denotes focus.",
+        "section": "colors"
+      },
+      {
+        "name": "Artwork Identity",
+        "body": "Preserve supplied service artwork rather than typesetting substitute logos.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do preserve logo proportions and the white YouTube background.",
+      "Do honour reduced motion."
+    ],
+    "donts": [
+      "Don't add greetings, promotional copy, tile numbers or decorative arrows to this launcher.",
+      "Don't infer mobile reflow or TV performance guarantees from scaled local previews."
+    ]
+  }
+}

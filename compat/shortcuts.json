@@ -1,0 +1,32 @@
+[
+  {
+    "id": "netflix",
+    "title": "Netflix",
+    "brand": "netflix"
+  },
+  {
+    "id": "lovefilm",
+    "title": "Prime Video",
+    "brand": "prime"
+  },
+  {
+    "id": "bbc.iplayer.3.0",
+    "title": "BBC iPlayer",
+    "brand": "iplayer"
+  },
+  {
+    "id": "youtube.leanback.v4",
+    "title": "YouTube",
+    "brand": "youtube"
+  },
+  {
+    "id": "com.disney.disneyplus-prod",
+    "title": "Disney+",
+    "brand": "disney"
+  },
+  {
+    "id": "space.nuvio.native.legacy",
+    "title": "Nuvio",
+    "brand": "nuvio"
+  }
+]

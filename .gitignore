@@ -7,3 +7,14 @@ build/
 # local, per-person settings
 tv.env
 src/config/catalog.local.ts
+
+# Generated compatibility output
+compat/generated/
+dist-legacy/
+
+# Local design review evidence and runtime state
+.playwright-mcp/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/cache/
+.impeccable/config.local.json

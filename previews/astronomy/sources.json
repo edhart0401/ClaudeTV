@@ -1,0 +1,26 @@
+[
+  {
+    "id": "night-sky",
+    "source": "https://www.eso.org/public/images/potw1938a/",
+    "download": "https://cdn.eso.org/images/wallpaper4/potw1938a.jpg",
+    "credit": "ESO/P. Hor\u00e1lek",
+    "sha256": "45ceaf742d8f63cce18f5272421ffff5fc905962e9d516d76942af88814d03ab",
+    "processing": "Downloaded JPEG unchanged. Browser-only crop, CSS blur, opacity, shade and service ambience."
+  },
+  {
+    "id": "deep-field",
+    "source": "https://esahubble.org/images/heic0406a/",
+    "download": "https://cdn.esahubble.org/archives/images/wallpaper_fhd/heic0406a.jpg",
+    "credit": "NASA, ESA, S. Beckwith (STScI) and the HUDF Team",
+    "sha256": "d4a780bd1a60b8a55577f64777740d8750f6033095bfe09d5a4c6b140b504826",
+    "processing": "Downloaded JPEG unchanged. Browser-only crop, CSS blur, opacity, shade and service ambience."
+  },
+  {
+    "id": "nebula",
+    "source": "https://esahubble.org/images/heic1501a/",
+    "download": "https://cdn.esahubble.org/archives/images/wallpaper_fhd/heic1501a.jpg",
+    "credit": "NASA, ESA/Hubble and the Hubble Heritage Team",
+    "sha256": "45f5ed38257ec5c5be58555afefe1e67526425bd27f11c4a9df283d3b3f044ab",
+    "processing": "Downloaded JPEG unchanged. Browser-only crop, CSS blur, opacity, shade and service ambience."
+  }
+]

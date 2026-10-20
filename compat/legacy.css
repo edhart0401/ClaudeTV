@@ -1,0 +1,45 @@
+/* Projection-room home. Fixed TV canvas is scaled as a whole in local previews. */
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#101722;color:#f7f4ed;font-family:'Helvetica Neue',Arial,sans-serif;}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+::selection{background:#c9ac79;color:#101722;}
+.spotlight-home{position:relative;width:1920px;height:1080px;overflow:hidden;background:#101722;transform-origin:0 0;}
+.ambient-base,.app-backdrop{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;}
+.ambient-base{background:#080e1b;}
+.app-backdrop{opacity:0;transition:opacity 420ms cubic-bezier(.4,0,.2,1);}
+.app-backdrop.active{opacity:1;}
+.spotlight-utilities{position:absolute;top:58px;left:88px;right:88px;display:flex;align-items:center;justify-content:space-between;}
+.corner-action{display:flex;align-items:center;justify-content:center;width:68px;height:68px;padding:0;border:1px solid transparent;border-radius:50%;background:transparent;color:#c3c8cf;outline:none;}
+.corner-action svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.corner-action:focus{background:#293649;border-color:#c9ac79;color:#f7f4ed;}
+.corner-action:active{background:#364459;}
+.preview-label{font-size:16px;letter-spacing:.04em;color:#a8b3c5;}
+.service-art{position:absolute;left:0;top:0;display:block;width:100%;height:100%;overflow:hidden;background:#080b12;}
+.service-art img{position:absolute;display:block;width:auto;height:auto;max-width:100%;max-height:100%;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.brand-netflix{background:#000;}.brand-prime{background:#17233e;}.brand-iplayer{background:#111;}.brand-disney{background:#020d3f;}.brand-nuvio{background:#101018;}.brand-ps4{background:#1451da;}.brand-youtube{background:#fff;}
+.brand-youtube img{width:100%;max-height:none;filter:contrast(2);}
+.app-strip{position:absolute;left:292px;top:764px;width:1336px;height:174px;}
+.app-strip-track{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+.app-choice{position:relative;display:block;flex:none;width:160px;height:100px;margin:16px 14px 0;padding:0;border:0;border-radius:12px;background:#101722;outline:0;opacity:.84;}
+.app-choice .service-art{border-radius:12px;}
+.app-choice.chosen{opacity:1;}
+.app-choice:focus{opacity:1;}
+.app-choice:focus:after{content:'';position:absolute;left:-5px;top:-5px;right:-5px;bottom:-5px;border:2px solid #f7f4ed;border-radius:16px;pointer-events:none;}
+.selection-line{position:absolute;left:56px;right:56px;bottom:-20px;height:3px;border-radius:2px;background:transparent;}
+.chosen .selection-line{background:#c9ac79;}
+.opening-state{position:absolute;left:0;right:0;bottom:0;padding:20px;background:rgba(8,11,18,.92);text-align:center;font-size:22px;color:#f7f4ed;}
+.home-notice{position:absolute;left:460px;right:460px;bottom:46px;padding:18px 24px;text-align:center;background:#273449;color:#f7f4ed;border-radius:12px;font-size:21px;opacity:0;pointer-events:none;}
+.home-notice.visible{opacity:1;}
+
+@media (hover:hover) and (pointer:fine){.app-choice:hover{opacity:1;}.corner-action:hover{color:#fff;background:#202d40;}}
+@media (prefers-reduced-motion:reduce){.app-backdrop{transition:none;}}
+
+ .light-background .corner-action,.light-background .preview-label{color:#343943;}
+.light-background .corner-action:focus{color:#fff;}
+.light-background .app-choice:focus:after{border-color:#343943;}
+.light-background .chosen .selection-line{background:#343943;}
+
+.app-backdrop.brand-youtube{filter:contrast(2);}
+
+.spotlight-home .app-backdrop{box-sizing:border-box;border-style:solid;border-color:transparent;border-image-slice:1 fill;border-image-repeat:stretch;}
+/* Cover the source WebP's six-pixel edge artefact after scaling. */
+.app-backdrop.brand-disney:after{content:'';position:absolute;left:0;top:-1080px;width:6px;height:2160px;background:#020e41;}
