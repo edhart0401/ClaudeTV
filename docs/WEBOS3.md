@@ -138,3 +138,16 @@ remembered app focus, and byte-identical packaged wallpaper. The preview was
 visually checked, and the TV reported nine buttons, the correct wallpaper URL,
 and changing intermediate matrix3d transforms during navigation. Animation
 smoothness still depends on the TV GPU and should be judged on the actual TV.
+
+## Four visible positions (0.5.0)
+
+All seven services remain in the carousel, with exactly four shown at rest:
+front (selected), right (next), rear (next after that), and left (previous).
+The oval is viewed from above, using smaller side/rear cards for depth. Every
+logo faces the viewer, including the rear card. Hidden services enter as the
+selection advances. CSS translates/scales each card with 420 ms transitions;
+no back faces or mirrored logos are shown. Corner controls and wrap navigation
+remain available. Seventeen tests pass, including all seven active selections
+having exactly one card in each of the four visible positions. The preview was
+visually inspected and live TV inspection confirmed seven services with four
+visible positions.
