@@ -201,3 +201,11 @@ checked loading, duplicate suppression, launch failure and retry without TV acce
 1920×1080 and 1440×810 previews were visually reviewed; a scaled phone preview
 was checked for intact framing. Independent finish review: ship, no material fixes.
 This version has not been installed or performance-tested on the actual TV.
+
+## Selected Deep Field background (0.8.1, local only)
+
+Ed selected the Hubble Ultra Deep Field from the three astronomy previews.
+The downloaded JPEG is unchanged; CSS applies .6px static blur, .8 opacity,
+lower-edge shading and .26 app-colour ambience. Original artwork credit:
+NASA, ESA, S. Beckwith (STScI) and the HUDF Team;
+https://esahubble.org/images/heic0406a/. No TV deployment in this iteration.

@@ -47,6 +47,7 @@ function Home(){
  return <main class={'spotlight-home'+(pointer?' pointer-mode':'')}>
   <div class="ambient-base" aria-hidden="true"/>
   <div class="ambient-texture" aria-hidden="true"/>
+  <div class="ambient-shade" aria-hidden="true"/>
   {services.map((service,i)=><div key={service.id} class={'ambient-light'+(state.active===i?' active':'')} style={{background:'radial-gradient(ellipse at 50% 36%, '+service.ambient+' 0%, transparent 68%)'}} aria-hidden="true"/>)}
   <header class="spotlight-utilities">
    <button class="corner-action" aria-label="Settings" {...bind(0)} onClick={()=>activate(0)}><Icon/></button>

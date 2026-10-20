@@ -115,7 +115,7 @@ Utilities sit at opposite upper corners, inset horizontally (88px) and verticall
 
 ## Elevation & Depth
 
-Diffuse shadows lift the selected plate above the dark canvas. Background light is a radial gradient centred at (50% 36%), fading to transparent at (68%); the active layer has opacity (.62). A right-side Art Deco raster occupies the last (47%) of the canvas at opacity (.045). It reads as faint texture rather than a dominant wallpaper.
+Diffuse shadows lift the selected plate above the dark canvas. Background light is a radial gradient centred at (50% 36%), fading to transparent at (68%); the active layer has opacity (.26). The user-selected Hubble Ultra Deep Field covers the canvas at opacity (.8), with a static (.6px) blur and a dark lower-edge gradient. The image extends (20px) beyond each edge to avoid blur seams. Credit: NASA, ESA, S. Beckwith (STScI) and the HUDF Team. Source: https://esahubble.org/images/heic0406a/.
 
 ### Shadow Vocabulary
 - **Selected plate:** `0 30px 70px rgba(0,0,0,.36)`.

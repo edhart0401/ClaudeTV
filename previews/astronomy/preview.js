@@ -7,6 +7,7 @@
  const style=document.createElement('style');style.textContent=`
  .ambient-texture{left:-20px;top:-20px;width:1960px;height:1120px;background-position:center;background-size:cover;}
  .ambient-base{background:#080e1b;}
+ .ambient-shade{display:none;}
  .ambient-light.active{opacity:.26;}
  .astronomy-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,10,22,.18),rgba(5,10,22,.05) 45%,rgba(5,10,22,.72));pointer-events:none;}
  .preview-label{visibility:hidden;}

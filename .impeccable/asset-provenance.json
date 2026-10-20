@@ -55,6 +55,15 @@
       "source": "/Users/ed/test/Art-Deco_0005_6 .webp",
       "sha256": "edbccaa9eeaa4578416064c60ae76f168ed0eaa489515029679e0cff7d5c1d92",
       "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/backgrounds/hubble-ultra-deep-field.jpg",
+      "origin": "existing-observation",
+      "source": "https://esahubble.org/images/heic0406a/",
+      "download": "https://cdn.esahubble.org/archives/images/wallpaper_fhd/heic0406a.jpg",
+      "credit": "NASA, ESA, S. Beckwith (STScI) and the HUDF Team",
+      "sha256": "d4a780bd1a60b8a55577f64777740d8750f6033095bfe09d5a4c6b140b504826",
+      "modifications": "Downloaded JPEG unchanged. Browser-only crop, CSS blur, opacity, shade and service ambience."
     }
   ]
 }
