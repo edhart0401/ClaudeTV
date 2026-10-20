@@ -29,3 +29,9 @@ test('compact logo scene retains aspect and keeps lettering above the strip',()=
   assert.equal(style.borderImageSource,'url("'+app.artwork+'")');
  }
 });
+
+test('Disney uses its dark blue instead of stretching the lighter left edge',()=>{
+ const style=sceneStyle(services.find(app=>app.brand==='disney'));
+ assert.equal(style.borderImageSlice,'1 1 1 0 fill');
+ assert.equal(style.backgroundColor,'#020e41');
+});

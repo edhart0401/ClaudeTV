@@ -21,5 +21,6 @@ export function navigate(state,key){
 export function sceneStyle(app){
  const [width,height]=app.sceneSize;
  const top=412-height/2,right=(1920-width)/2,bottom=1080-top-height;
- return {borderImageSource:'url("'+app.artwork+'")',borderWidth:top+'px '+right+'px '+bottom+'px '+right+'px'};
+ const edgeFix=app.brand==='disney'?{borderImageSlice:'1 1 1 0 fill',backgroundColor:'#020e41'}:{};
+ return {...edgeFix,borderImageSource:'url("'+app.artwork+'")',borderWidth:top+'px '+right+'px '+bottom+'px '+right+'px'};
 }

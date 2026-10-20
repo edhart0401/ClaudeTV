@@ -41,3 +41,5 @@ button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparen
 .app-backdrop.brand-youtube{filter:contrast(2);}
 
 .spotlight-home .app-backdrop{box-sizing:border-box;border-style:solid;border-color:transparent;border-image-slice:1 fill;border-image-repeat:stretch;}
+/* Cover the source WebP's six-pixel edge artefact after scaling. */
+.app-backdrop.brand-disney:after{content:'';position:absolute;left:0;top:-1080px;width:6px;height:2160px;background:#020e41;}
