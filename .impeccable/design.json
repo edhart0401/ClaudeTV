@@ -45,6 +45,11 @@
         "name": "pointer-crossfade",
         "value": "opacity 160ms ease-out",
         "purpose": "Pointer mode only. Remote updates are immediate; reduced motion removes transitions."
+      },
+      {
+        "name": "artwork-background",
+        "value": "opacity 280ms cubic-bezier(.22,1,.36,1)",
+        "purpose": "Selected app artwork crossfade on remote and pointer; reduced motion removes it. Blur is static on a quarter-resolution surface."
       }
     ],
     "breakpoints": []

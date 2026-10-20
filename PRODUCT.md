@@ -21,7 +21,7 @@ Netflix, Prime Video (lovefilm), BBC iPlayer, YouTube, Disney+, Nuvio Legacy, an
 Use Ed's supplied service-logo files without distorting them; YouTube has a white background. No greeting, personal masthead, promotional content, tile numbers, descriptions, or decorative arrows. Ed rejected the previous disconnected tile/wallpaper composition and the full revolving 3D ring. His confirmed redesign structure is one large selected app plus a compact strip showing all seven. The requested direction is modern, dynamic and clean.
 
 ## Evidence on Hand
-Supplied logo assets under public/logos and the selected Hubble Ultra Deep Field background under public/backgrounds. Existing launcher and package tests. No proprietary content artwork or streaming catalog API is part of this launcher.
+Supplied logo assets under public/logos and retained astronomy alternatives under public/backgrounds. The latest requested direction uses the selected app artwork as a blurred, smoothly changing background. Existing launcher and package tests. No proprietary content artwork or streaming catalog API is part of this launcher.
 
 ## Product Principles
 - Put selecting an app ahead of browsing decoration.

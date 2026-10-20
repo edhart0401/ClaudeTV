@@ -209,3 +209,14 @@ The downloaded JPEG is unchanged; CSS applies .6px static blur, .8 opacity,
 lower-edge shading and .26 app-colour ambience. Original artwork credit:
 NASA, ESA, S. Beckwith (STScI) and the HUDF Team;
 https://esahubble.org/images/heic0406a/. No TV deployment in this iteration.
+
+## App artwork background (0.9.0, local only)
+
+The selected app's original local artwork becomes a full-screen softened
+background. CSS transitions only opacity over 280ms, including remote selection;
+focus and the main card still respond immediately. Interrupted transitions
+retarget naturally, and reduced motion disables them. Static 12px blur is
+applied to a quarter-resolution surface enlarged fourfold. A dark overlay
+keeps controls visible with bright artwork. No new assets or network calls.
+Browser checks covered intermediate opacity, seven distinct artwork sources,
+rapid input and reduced motion. TV GPU smoothness remains unverified.
