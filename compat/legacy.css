@@ -1,49 +1,41 @@
-/* Fixed 1080p composition using features supported by the TV's Chrome 38. */
-html,body{background:#102c30;color:#f5f6fa;font-family:'Helvetica Neue',Arial,sans-serif;}
-button{font-family:inherit;cursor:pointer;}
-.living-room{position:absolute;left:0;top:0;width:1920px;height:1080px;padding:0 100px;background:radial-gradient(ellipse at 50% 48%,rgba(8,21,25,.12),rgba(4,14,18,.55)),url('/backgrounds/art-deco-reference.webp') center center no-repeat;background-size:auto,cover;}
-.home-top{position:absolute;top:51px;left:100px;right:100px;display:flex;justify-content:space-between;}
-.utility{width:64px;height:64px;border:1px solid rgba(207,178,122,.25);border-radius:50%;background:rgba(8,24,28,.7);color:#d9c59d;display:flex;align-items:center;justify-content:center;outline:none;}
-.utility svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.5;}
-.utility:focus{background:#304b4d;border-color:#ecd8ae;box-shadow:0 0 0 3px rgba(224,198,148,.25);color:#fff0cf;}
-.collection{position:absolute;left:100px;right:100px;top:280px;}
-.home-content{display:flex;align-items:stretch;}
-.streaming-grid{display:flex;flex-wrap:wrap;width:1305px;}
-.service-card{position:relative;flex:none;width:411px;height:248px;margin:0 24px 24px 0;border-radius:14px;border:1px solid rgba(201,181,139,.24);padding:0;outline:none;color:white;overflow:hidden;transition:transform 160ms ease,border-color 160ms ease,box-shadow 160ms ease;box-shadow:0 10px 30px rgba(0,0,0,.2);}
-.service-card:focus,.console-card:focus,.service-card.is-selected,.console-card.is-selected{border-color:#f0d8a6;box-shadow:0 0 0 3px rgba(226,194,133,.45),0 18px 40px rgba(0,0,0,.35);transform:translateY(-5px);}
-.mark{position:absolute;left:18px;right:18px;top:0;bottom:0;display:flex;align-items:center;justify-content:center;}
-.service-netflix{background:linear-gradient(125deg,rgba(49,15,25,.97),rgba(22,16,23,.97));}
-.netflix-mark{color:#ff2639;font-family:Impact,'Arial Narrow',Arial,sans-serif;font-size:64px;letter-spacing:2px;font-weight:800;}
-.service-prime{background:linear-gradient(125deg,rgba(15,43,63,.97),rgba(10,26,41,.97));}
-.prime-mark{font-size:54px;font-weight:600;letter-spacing:-2px;color:#f7fbff;padding-bottom:13px;}
-.prime-mark svg{position:absolute;width:244px;height:35px;left:66px;top:143px;fill:none;stroke:#42bbf3;stroke-width:4;stroke-linecap:round;}
-.service-iplayer{background:linear-gradient(125deg,rgba(58,24,49,.97),rgba(32,16,30,.97));}
-.iplayer-mark{font-size:52px;letter-spacing:-2px;font-weight:700;color:#ff65b2;}
-.bbc-boxes{display:flex;margin-right:13px;}
-.bbc-boxes b{background:#f7f3f8;color:#301a2e;margin-right:3px;font-size:24px;letter-spacing:0;padding:1px 4px;}
-.service-youtube{background:linear-gradient(125deg,rgba(38,34,39,.97),rgba(22,24,29,.97));}
-.youtube-mark{font-size:46px;letter-spacing:-2px;font-weight:600;}
-.youtube-mark svg{width:78px;height:55px;margin-right:15px;}
-.service-disney{background:linear-gradient(125deg,rgba(19,39,77,.97),rgba(14,24,48,.97));}
-.disney-mark{font-family:Georgia,serif;font-size:72px;font-style:italic;letter-spacing:-4px;padding-top:12px;}
-.disney-mark>svg{position:absolute;left:42px;top:58px;width:290px;height:67px;fill:none;stroke:#77c6ee;stroke-width:2;}
-.disney-plus{font-family:Arial,sans-serif;font-style:normal;font-weight:300;margin-left:7px;}
-.service-nuvio{background:linear-gradient(125deg,rgba(30,53,44,.97),rgba(15,33,29,.97));}
-.nuvio-mark{font-size:64px;font-weight:500;letter-spacing:-3px;}
-.nuvio-symbol{width:66px;height:66px;line-height:66px;background:#a2dabd;color:#163329;border-radius:17px;text-align:center;display:inline-block;margin-right:18px;font-style:italic;font-weight:700;font-size:57px;}
-.console-card{width:415px;height:520px;flex:none;border:1px solid rgba(201,181,139,.3);border-radius:14px;background:radial-gradient(ellipse at 50% 40%,#263f62,#111f36 85%);position:relative;overflow:hidden;color:#f1f5ff;padding:0;outline:none;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform 160ms ease,border-color 160ms ease,box-shadow 160ms ease;}
-.ps4-logo{position:absolute;width:320px;height:123px;left:47px;top:198px;}
-.home-error{position:absolute;bottom:125px;left:550px;right:550px;text-align:center;padding:20px;border-radius:12px;background:#492530;color:#fff;font-size:22px;}
-
-/* Preserve the original aspect ratio without relying on object-fit. */
-.service-logo{position:absolute;display:block;left:0;top:50%;width:100%;height:auto;transform:translateY(-50%);pointer-events:none;}
-.service-netflix{background:#000;}
-.service-prime{background:#17233e;}
-.service-disney{background:#020d3f;}
-.service-ps4{background:#1451da;}
-.service-youtube{background:#fff;}
-.service-iplayer{background:#111;}
-.service-nuvio{background:#101018;}
-
-/* The supplied YouTube artwork has a pale checkerboard: flatten it to white. */
-.logo-youtube{filter:contrast(2);}
+/* Projection-room home. Fixed TV canvas is scaled as a whole in local previews. */
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#101722;color:#f7f4ed;font-family:'Helvetica Neue',Arial,sans-serif;}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+::selection{background:#c9ac79;color:#101722;}
+.spotlight-home{position:relative;width:1920px;height:1080px;overflow:hidden;background:#101722;transform-origin:0 0;}
+.ambient-base,.ambient-texture,.ambient-light{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;}
+.ambient-base{background:linear-gradient(180deg,#121b2a 0%,#101722 66%,#0c121c 100%);}
+.ambient-texture{left:53%;width:47%;background:url('/backgrounds/art-deco-reference.webp') right center/auto 100% no-repeat;opacity:.045;}
+.ambient-light{opacity:0;}
+.ambient-light.active{opacity:.62;}
+.spotlight-utilities{position:absolute;top:58px;left:88px;right:88px;display:flex;align-items:center;justify-content:space-between;}
+.corner-action{display:flex;align-items:center;justify-content:center;width:68px;height:68px;padding:0;border:1px solid transparent;border-radius:50%;background:transparent;color:#c3c8cf;outline:none;}
+.corner-action svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.corner-action:focus{background:#293649;border-color:#c9ac79;color:#f7f4ed;}
+.corner-action:active{background:#364459;}
+.preview-label{font-size:16px;letter-spacing:.04em;color:#a8b3c5;}
+.spotlight-stage{position:absolute;top:205px;left:592px;width:736px;height:414px;}
+.stage-shadow{position:absolute;left:7%;top:94%;width:86%;height:30px;border-radius:50%;box-shadow:0 24px 65px 24px rgba(0,0,0,.24);}
+.selected-service{position:relative;display:block;width:736px;height:414px;padding:0;border:0;border-radius:16px;background:#080b12;outline:0;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.36);}
+.selected-service.has-focus:after{content:'';position:absolute;left:0;top:0;right:0;bottom:0;border:2px solid #c9ac79;border-radius:16px;pointer-events:none;}
+.spotlight-art{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;pointer-events:none;}
+.spotlight-art.active{opacity:1;}
+.service-art{position:absolute;left:0;top:0;display:block;width:100%;height:100%;overflow:hidden;background:#080b12;}
+.service-art img{position:absolute;display:block;width:auto;height:auto;max-width:100%;max-height:100%;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.brand-netflix{background:#000;}.brand-prime{background:#17233e;}.brand-iplayer{background:#111;}.brand-disney{background:#020d3f;}.brand-nuvio{background:#101018;}.brand-ps4{background:#1451da;}.brand-youtube{background:#fff;}
+.brand-youtube img{width:100%;max-height:none;filter:contrast(2);}
+.app-strip{position:absolute;left:292px;top:764px;width:1336px;height:174px;}
+.app-strip-track{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+.app-choice{position:relative;display:block;flex:none;width:160px;height:100px;margin:16px 14px 0;padding:0;border:0;border-radius:12px;background:#101722;outline:0;opacity:.84;}
+.app-choice .service-art{border-radius:12px;}
+.app-choice.chosen{opacity:1;}
+.app-choice:focus{opacity:1;}
+.app-choice:focus:after{content:'';position:absolute;left:-5px;top:-5px;right:-5px;bottom:-5px;border:2px solid #f7f4ed;border-radius:16px;pointer-events:none;}
+.selection-line{position:absolute;left:56px;right:56px;bottom:-20px;height:3px;border-radius:2px;background:transparent;}
+.chosen .selection-line{background:#c9ac79;}
+.opening-state{position:absolute;left:0;right:0;bottom:0;padding:20px;background:rgba(8,11,18,.92);text-align:center;font-size:22px;color:#f7f4ed;}
+.home-notice{position:absolute;left:460px;right:460px;bottom:46px;padding:18px 24px;text-align:center;background:#273449;color:#f7f4ed;border-radius:12px;font-size:21px;opacity:0;pointer-events:none;}
+.home-notice.visible{opacity:1;}
+.pointer-mode .ambient-light,.pointer-mode .spotlight-art{transition:opacity 160ms ease-out;}
+@media (hover:hover) and (pointer:fine){.app-choice:hover{opacity:1;}.corner-action:hover{color:#fff;background:#202d40;}}
+@media (prefers-reduced-motion:reduce){.pointer-mode .ambient-light,.pointer-mode .spotlight-art{transition:none;}}

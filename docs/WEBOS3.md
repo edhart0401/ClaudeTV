@@ -174,3 +174,30 @@ pale checkerboard to white while retaining the red/black logo; source files are
 unchanged. Sixteen tests pass. A fresh preview was visually inspected; live TV
 inspection confirmed the six tiles plus PS4, all seven images loaded, a white
 YouTube background and the expected filter and square image dimensions.
+
+## Spotlight preview (0.8.0, local only)
+
+A large selected-app plate sits above a strip showing all seven supplied logos.
+Midnight blue, bronze focus marks and service-colour ambience replace the dominant
+wallpaper; the supplied Deco image remains as faint texture. Settings and Exit
+retain their upper corners. No greetings, captions, numbered tiles or arrows.
+
+Run `npm run build:legacy`, then `npm run preview:legacy`; open
+http://127.0.0.1:8766. Left/right selects and wraps; Enter opens the selected app.
+Down reaches its strip tab; Up returns to the plate, then the corner controls.
+Pointer selection uses the strip, followed by the large Open action. Browser
+actions display a local simulation message without contacting the TV.
+
+Navigation state lives in `compat/home-model.js`. Keyboard changes are immediate;
+pointer artwork/ambient opacity transitions last 160 ms and respect reduced motion.
+The fixed 1920×1080 TV canvas scales intact for laptop/phone previews; it is not
+a separate mobile interface. DESIGN.md records the actual visual system and
+`.impeccable/asset-provenance.json` records the supplied raster sources.
+
+Validation: 19 automated tests pass, including ES5 output and exact app IDs.
+Playwright checked all seven selections, wrapping, rapid input, corner/strip
+focus, Tab order, decoded artwork and reduced motion. A mocked PalmServiceBridge
+checked loading, duplicate suppression, launch failure and retry without TV access.
+1920×1080 and 1440×810 previews were visually reviewed; a scaled phone preview
+was checked for intact framing. Independent finish review: ship, no material fixes.
+This version has not been installed or performance-tested on the actual TV.

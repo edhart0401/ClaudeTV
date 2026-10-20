@@ -1,0 +1,60 @@
+{
+  "assets": [
+    {
+      "path": "public/logos/BBC.png",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/BBC.png",
+      "sha256": "dc303e2555455984d41b05896abf24a9a6a1a8bfa918f960806ce7cf90e074da",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/logos/PS4.jpg",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/PS4.jpg",
+      "sha256": "a4ebfd31d3a3448ea3ffe3de7beea07ef04e42336c8ae7cf7a7ba78d2b62542a",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/logos/Prime.jpg",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/Prime.jpg",
+      "sha256": "3db382e1bec0a14e74c408e57b1ef2d6cabdf08a80870f40146828eb7aca39be",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/logos/Disney.webp",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/Disney.webp",
+      "sha256": "f9c01741fd576ba07a89c293a062700a4fc8cdedbaf094a5dd6c6ef2991532b7",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/logos/Netflix.jpg",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/Netflix.jpg",
+      "sha256": "ddbef0a235d097476532d838d94668c93204eef52f2cecae3f994995022d671e",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/logos/Nuvio.png",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/Nuvio.png",
+      "sha256": "e8d1045ab4ed6d9a5a2481f3f28155635eae5117bdec2ddac642da8da036123d",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/logos/Youtube.png",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/Youtube.png",
+      "sha256": "45e9cafcb5cc0112afbbe758e05ff26df0e928b581b034350ddfeb15b598bec4",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    },
+    {
+      "path": "public/backgrounds/art-deco-reference.webp",
+      "origin": "user-supplied",
+      "source": "/Users/ed/test/Art-Deco_0005_6 .webp",
+      "sha256": "edbccaa9eeaa4578416064c60ae76f168ed0eaa489515029679e0cff7d5c1d92",
+      "modifications": "None; original bytes retained. CSS controls presentation."
+    }
+  ]
+}

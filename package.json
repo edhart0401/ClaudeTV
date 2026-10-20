@@ -12,7 +12,8 @@
     "deploy": "npm run build && npm run package && npm run install:tv",
     "manifest": "node scripts/gen-manifest.mjs",
     "build:legacy": "node compat/build.mjs",
-    "test:legacy": "node --test tests/*.test.mjs"
+    "test:legacy": "node --test tests/*.test.mjs",
+    "preview:legacy": "python3 -m http.server 8766 --bind 127.0.0.1 --directory dist-legacy"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
