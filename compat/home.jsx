@@ -54,7 +54,6 @@ function Home(){
    <button class="corner-action" aria-label="Exit launcher" {...bind(1)} onClick={()=>activate(1)}><Icon exit/></button>
   </header>
   <section id="selected-app-panel" class="spotlight-stage" role="tabpanel" aria-label="Selected app">
-   <div class="stage-shadow" aria-hidden="true"/>
    <button id="selected-app" class={'selected-service'+(state.focus===2?' has-focus':'')} aria-label={'Open '+app.title} aria-busy={loading?'true':'false'} {...bind(2)} onClick={()=>activate(2)}>
     {services.map((service,i)=><span key={service.id} class={'spotlight-art'+(state.active===i?' active':'')} aria-hidden="true"><Art app={service} large/></span>)}
     {loading&&<span class="opening-state">Opening…</span>}

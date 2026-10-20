@@ -220,3 +220,16 @@ applied to a quarter-resolution surface enlarged fourfold. A dark overlay
 keeps controls visible with bright artwork. No new assets or network calls.
 Browser checks covered intermediate opacity, seven distinct artwork sources,
 rapid input and reduced motion. TV GPU smoothness remains unverified.
+
+## Seamless artwork and unified fade (0.9.1, local only)
+
+Removed the large plate border, radius, shadow and opaque button fill. Artwork
+uses a prefixed/unprefixed radial alpha mask plus screen blending to merge its
+edges with the backdrop. Foreground artwork now crossfades for keyboard as well
+as pointer selection, synchronised with the background at 420ms. This fixes the
+previous keyboard foreground snap. Reduced motion disables both fades.
+YouTube's hero uses CSS contrast/inversion/hue correction to remove its baked
+white field; strip artwork remains white and source images remain unchanged.
+Browser regression checks cover the absent frame and keyboard foreground fade.
+The test slows transitions to sample intermediate opacity reliably under load;
+this checks behaviour, not real-device frame rate. Actual TV rendering is pending.

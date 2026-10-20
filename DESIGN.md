@@ -115,13 +115,13 @@ Utilities sit at opposite upper corners, inset horizontally (88px) and verticall
 
 ## Elevation & Depth
 
-Diffuse shadows lift the selected plate above the dark canvas. The selected app's supplied artwork fills a blurred background layer. Seven local layers stay mounted; CSS crossfades their opacity over (280ms), with no queued animation or delayed selection. Artwork is painted on a (528×318) surface, blurred (12px) and enlarged fourfold. A dark gradient preserves utility/strip contrast even for YouTube's white artwork. No blur or layout property animates. Reduced motion removes the crossfade. Deep Field remains a retained alternative asset, not the active background.
+Diffuse shadows lift the selected plate above the dark canvas. The selected app's supplied artwork fills a blurred background layer. Seven local layers stay mounted; CSS crossfades their opacity over (420ms), with no queued animation or delayed selection. Artwork is painted on a (528×318) surface, blurred (12px) and enlarged fourfold. A dark gradient preserves utility/strip contrast even for YouTube's white artwork. No blur or layout property animates. Reduced motion removes the crossfade. Deep Field remains a retained alternative asset, not the active background.
 
 ### Shadow Vocabulary
 - **Selected plate:** `0 30px 70px rgba(0,0,0,.36)`.
 - **Projected floor:** `0 24px 65px 24px rgba(0,0,0,.24)` on a shallow ellipse below the plate.
 
-Pointer interaction crossfades artwork and ambient opacity over (160ms ease-out). Remote navigation changes immediately. Reduced-motion preference removes the transitions.
+Foreground and background artwork crossfade together over (420ms cubic-bezier(.4,0,.2,1)) for both pointer and remote. Focus and launch targets update immediately. Reduced-motion preference removes the transitions.
 
 ## Shapes
 
@@ -131,7 +131,7 @@ Service plates are gently rounded rectangles; small choices use the tighter choi
 
 ### Selected service
 
-A large image-led launch button. Its bronze inset outline is visible while the large action has focus. An opening overlay uses the darkest plate colour at (.92) opacity. All service images remain mounted; the active artwork layer becomes visible. The supplied YouTube raster receives the implemented CSS contrast treatment (`contrast(2)`), while its original asset file stays unchanged.
+A borderless image-led launch target with no shadow or solid button surface. A feathered alpha mask and screen blending soften the supplied artwork into the backdrop. YouTube’s large artwork alone receives an inverted hue-corrected treatment to remove its white field; the strip retains the original white logo tile. An opening overlay uses the darkest plate colour at (.92) opacity. All service images remain mounted; the active artwork layer becomes visible. The supplied YouTube raster receives the implemented CSS contrast treatment (`contrast(2)`), while its original asset file stays unchanged.
 
 ### App navigation
 
