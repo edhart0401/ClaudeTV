@@ -115,7 +115,7 @@ Utilities sit at opposite upper corners, inset horizontally (88px) and verticall
 
 ## Elevation & Depth
 
-Diffuse shadows lift the selected plate above the dark canvas. The selected app's supplied artwork fills a blurred background layer. Seven local layers stay mounted; CSS crossfades their opacity over (420ms), with no queued animation or delayed selection. Artwork is painted on a (528×318) surface, blurred (12px) and enlarged fourfold. A dark gradient preserves utility/strip contrast even for YouTube's white artwork. No blur or layout property animates. Reduced motion removes the crossfade. Deep Field remains a retained alternative asset, not the active background.
+Diffuse shadows lift the selected plate above the dark canvas. The selected app's background colour fills the whole scene: pure black for Netflix, pure white for YouTube, and the matching brand field for the other destinations. Background layers contain no artwork, enlarged text or blur. The foreground logo and background colour crossfade over (420ms). YouTube uses its original black/red identity on white; corner controls switch to dark ink. Reduced motion removes the fade.
 
 ### Shadow Vocabulary
 - **Selected plate:** `0 30px 70px rgba(0,0,0,.36)`.

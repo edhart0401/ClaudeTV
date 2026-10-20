@@ -44,10 +44,9 @@ function Home(){
   return()=>{window.removeEventListener('keydown',onKey);window.removeEventListener('resize',fit);clearTimeout(noticeTimer.current);};
  },[]);
  function bind(focus){return {ref:el=>{refs.current[focus]=el;},onFocus:()=>commit({...stateRef.current,focus}),onMouseDown:()=>setPointer(true),tabIndex:focus<3||focus===state.active+3?0:-1};}
- return <main class={'spotlight-home'+(pointer?' pointer-mode':'')}>
+ return <main class={'spotlight-home'+(pointer?' pointer-mode':'')+(app.brand==='youtube'?' light-background':'')}>
   <div class="ambient-base" aria-hidden="true"/>
-  {services.map((service,i)=><div key={service.id} class={'app-backdrop'+(state.active===i?' active':'')} aria-hidden="true"><div class={'backdrop-surface brand-'+service.brand} style={{backgroundImage:'url("'+service.artwork+'")'}}/></div>)}
-  <div class="ambient-shade" aria-hidden="true"/>
+  {services.map((service,i)=><div key={service.id} class={'app-backdrop brand-'+service.brand+(state.active===i?' active':'')} aria-hidden="true"/>)}
   <header class="spotlight-utilities">
    <button class="corner-action" aria-label="Settings" {...bind(0)} onClick={()=>activate(0)}><Icon/></button>
    {!television&&<span class="preview-label">Local preview</span>}
@@ -55,7 +54,7 @@ function Home(){
   </header>
   <section id="selected-app-panel" class="spotlight-stage" role="tabpanel" aria-label="Selected app">
    <button id="selected-app" class={'selected-service'+(state.focus===2?' has-focus':'')} aria-label={'Open '+app.title} aria-busy={loading?'true':'false'} {...bind(2)} onClick={()=>activate(2)}>
-    {services.map((service,i)=><span key={service.id} class={'spotlight-art'+(state.active===i?' active':'')} aria-hidden="true"><Art app={service} large/></span>)}
+    {services.map((service,i)=><span key={service.id} class={'spotlight-art hero-'+service.brand+(state.active===i?' active':'')} aria-hidden="true"><Art app={service} large/></span>)}
     {loading&&<span class="opening-state">Opening…</span>}
    </button>
   </section>

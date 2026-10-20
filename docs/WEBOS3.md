@@ -233,3 +233,13 @@ white field; strip artwork remains white and source images remain unchanged.
 Browser regression checks cover the absent frame and keyboard foreground fade.
 The test slows transitions to sample intermediate opacity reliably under load;
 this checks behaviour, not real-device frame rate. Actual TV rendering is pending.
+
+## Brand colour scene (0.9.2, local only)
+
+Clarified direction: the logo stays in the foreground; only its background
+colour fills the launcher. Removed all enlarged background artwork, blur and
+dark shading. Netflix is pure black; YouTube is pure white with its original
+black/red logo and dark utility controls. Other apps use their brand fields.
+Both logo and colour retain the 420ms crossfade. Browser regression checks
+require image-free backgrounds and exact Netflix/YouTube colours.
+18 tests and browser checks pass; no TV deployment.

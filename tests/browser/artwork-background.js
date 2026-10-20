@@ -13,12 +13,12 @@ async page=>{
  await page.getByRole('button',{name:'Open Prime Video',exact:true}).waitFor();
  await page.waitForTimeout(180);
  const opacity=await page.locator('.app-backdrop.active').evaluate(e=>Number(getComputedStyle(e).opacity));
- if(!(opacity>0&&opacity<.72))throw Error('Background must crossfade through intermediate opacity');
+ if(!(opacity>0&&opacity<1))throw Error('Background must crossfade through intermediate opacity');
  for(let i=0;i<23;i++)await page.keyboard.press('ArrowRight');
  await page.getByRole('button',{name:'Open YouTube',exact:true}).waitFor();
- const sources=await page.locator('.backdrop-surface').evaluateAll(es=>es.map(e=>getComputedStyle(e).backgroundImage));
- if(new Set(sources).size!==7)throw Error('Each app needs its own background');
- for(const source of sources)await page.evaluate(async src=>{const image=new Image();image.src=src.slice(5,-2);await image.decode()},source);
+ const fields=await page.locator('.app-backdrop').evaluateAll(es=>es.map(e=>({image:getComputedStyle(e).backgroundImage,color:getComputedStyle(e).backgroundColor})));
+ if(fields.length!==7||fields.some(f=>f.image!=='none'))throw Error('Background must be colour only, with no duplicate logo');
+ if(fields[0].color!=='rgb(0, 0, 0)'||fields[3].color!=='rgb(255, 255, 255)')throw Error('Netflix must be black and YouTube white');
  await slowMotion.evaluate(e=>e.remove());
  await page.emulateMedia({reducedMotion:'reduce'});
  const reduced=await page.locator('.app-backdrop.active').evaluate(e=>getComputedStyle(e).transitionDuration);
