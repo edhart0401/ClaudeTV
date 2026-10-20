@@ -35,12 +35,8 @@ test('carousel crosses either wrap boundary by one step and remembers its app',a
  for(let n=0;n<7;n++)position=nextFocus(position,'ArrowRight');
  assert.equal(position,2);
 });
-test('exactly four carousel positions stay visible for every active app',async()=>{
- const {carouselPosition}=await import('../compat/navigation.js');
- for(let active=0;active<7;active++){
-  const positions=Array.from({length:7},(_,i)=>carouselPosition(i,active));
-  assert.equal(positions.filter(p=>p!=='hidden').length,4);
-  assert.equal(positions[active],'front');
-  assert.deepEqual(positions.filter(p=>p!=='hidden').sort(),['front','left','rear','right']);
+test('all supplied logos are packaged byte-for-byte',async()=>{
+ for(const file of ['Netflix.jpg','Prime.jpg','BBC.png','Youtube.png','Disney.webp','Nuvio.png','PS4.jpg']){
+  assert.deepEqual(await readFile('dist-legacy/logos/'+file),await readFile('public/logos/'+file));
  }
 });

@@ -151,3 +151,14 @@ remain available. Seventeen tests pass, including all seven active selections
 having exactly one card in each of the four visible positions. The preview was
 visually inspected and live TV inspection confirmed seven services with four
 visible positions.
+
+## Original carousel with supplied logos (0.6.0)
+
+The four-position orbit is reverted to the original seven-slot 3D ring, showing
+the selected card and its angled left/right neighbours. All seven services and
+continuous wrap navigation remain. The supplied Netflix, Prime, BBC, YouTube,
+Disney, Nuvio and PS4 files are copied unchanged into `public/logos/` and displayed
+with object-fit contain. Hand-drawn/text logo substitutes are removed. The user's
+Art Deco wallpaper is retained. Seventeen tests pass, including byte-identical
+packaged logo assets; the browser preview was visually inspected and the TV's
+image decode status checked for all seven files.

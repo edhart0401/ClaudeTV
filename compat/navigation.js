@@ -15,8 +15,3 @@ export function carouselStep(from,to){
  const distance=(to-from+7)%7;
  return distance>3?distance-7:distance;
 }
-// A complete four-position orbit: front, right, rear and left.
-export function carouselPosition(index,active){
- const offset=(index-active+7)%7;
- return ({0:'front',1:'right',2:'rear',6:'left'})[offset]||'hidden';
-}
